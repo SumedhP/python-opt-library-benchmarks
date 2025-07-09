@@ -1,0 +1,19 @@
+# Quality Guidelines
+
+## For Lessons
+- Use clear, descriptive names (e.g., "NEXTJS_BUILD_ERROR_001")
+- Include detailed error patterns
+- Write atomic, testable verification steps
+- Document environmental requirements
+- Track solution effectiveness
+
+## For Memory
+- Keep observations atomic and factual
+- Use active voice for relations
+- Maintain consistent entity naming
+- Create meaningful connections
+- Regular cleanup of outdated information
+description:
+globs:
+alwaysApply: True
+---

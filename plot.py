@@ -44,6 +44,7 @@ BACKEND_COLORS = {
     "numba": "C4",
     "pytorch": "C5",
     "tensorflow": "C6",
+    "taichi": "C7",
 }
 
 

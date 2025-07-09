@@ -1,0 +1,14 @@
+[project]
+name = "pythonoptimizationbenchmark"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.2.1",
+    "jax[cpu]>=0.5.3",
+    "matplotlib>=3.10.3",
+    "numba>=0.61.2",
+    "taichi>=1.7.3",
+    "torch>=2.7.1",
+]

@@ -1,0 +1,30 @@
+# Lesson Learning and Error Solution Management
+
+## When encountering errors or problems:
+
+### 1. Check for Similar Errors
+- Search for existing lessons with similar error patterns
+- Consider error type, message, and context
+- Review previous solutions and their success rates
+
+### 2. Create New Lessons
+- For new or unique errors
+- Include comprehensive error pattern details
+- Document solution steps with verification
+- Track environmental context
+
+### 3. Update Existing Lessons
+- Record solution attempts and outcomes
+- Update success rates based on results
+- Add new observations or verification steps
+- Maintain metadata accuracy
+
+### 4. Recommend Solutions
+- Suggest relevant lessons based on context
+- Prioritize solutions with high success rates
+- Consider environmental compatibility
+- Provide step-by-step guidance
+description:
+globs:
+alwaysApply: True
+---
