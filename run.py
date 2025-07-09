@@ -79,7 +79,12 @@ DEFAULT_SIZE = tuple(2 ** i for i in range(12, 23, 2))
     show_default=True,
     help="Run benchmarks on given device where supported by the backend",
 )
-def main(benchmark, size=None, backend=None, repetitions=None, burnin=1, device="cpu"):
+@click.option(
+    "--no-consistency-check",
+    is_flag=True,
+    help="Disable consistency checking between backends (useful for benchmarks with random operations)",
+)
+def main(benchmark, size=None, backend=None, repetitions=None, burnin=1, device="cpu", no_consistency_check=False):
     """HPC benchmarks for Python
 
     Usage:
@@ -178,7 +183,7 @@ def main(benchmark, size=None, backend=None, repetitions=None, burnin=1, device=
 
                 # YOWO (you only warn once)
                 if not checked[(b, size)]:
-                    if size in results:
+                    if size in results and not no_consistency_check:
                         is_consistent = check_consistency(
                             results[size], convert_to_numpy(res, b, device)
                         )
