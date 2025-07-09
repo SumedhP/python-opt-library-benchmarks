@@ -1,4 +1,3 @@
-import math
 import importlib
 import functools
 
@@ -43,9 +42,9 @@ def get_callable(backend, size, device="cpu"):
 
 
 __implementations__ = (
-    "numpy",
     "numba", 
     "jax",
+    "numpy",
     "pytorch",
-    "taichi",
+    "taichi"
 ) 

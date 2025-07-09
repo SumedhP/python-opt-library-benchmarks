@@ -199,6 +199,8 @@ def main(benchmark, size=None, backend=None, repetitions=None, burnin=1, device=
             assert len(timings[run]) == repetitions[run] + burnin
 
     finally:
+        print("\nBenchmarking finished")
+        print(f"Computing statistics on result {len(timings)} runs...")
         stats = compute_statistics(timings)
         click.echo(format_output(stats, bm_identifier, device=device))
 
