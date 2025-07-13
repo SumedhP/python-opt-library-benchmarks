@@ -1,11 +1,6 @@
 import torch
 
-# Constants for indexing
-X = 0
-Y = 1
-
-
-@torch.jit.script
+@torch.compile(backend="eager")
 def chassis_odom_update(
     particles: torch.Tensor,
     odometry: torch.Tensor,
@@ -13,27 +8,27 @@ def chassis_odom_update(
     max_height: float,
     max_width: float,
 ) -> torch.Tensor:
+    X = 0
+    Y = 1
+
+    # Extract deltas and noise std
+    x_delta, y_delta = odometry[X], odometry[Y]
+    x_std, y_std = noise[X], noise[Y]
     N = particles.shape[0]
-    
-    x_delta = odometry[0]
-    y_delta = odometry[1]
-    x_std = noise[0]
-    y_std = noise[1]
-    
-    # Generate noise for all particles at once
-    random_noise_x = torch.normal(torch.zeros(N, device=particles.device), x_std)
-    random_noise_y = torch.normal(torch.zeros(N, device=particles.device), y_std)
-    
-    # Vectorized update
-    new_particles = particles.clone()
-    new_particles[:, 0] += x_delta + random_noise_x
-    new_particles[:, 1] += y_delta + random_noise_y
-    
-    # Vectorized clipping
-    new_particles[:, 0] = torch.clamp(new_particles[:, 0], 0, max_height)
-    new_particles[:, 1] = torch.clamp(new_particles[:, 1], 0, max_width)
-    
-    return new_particles
+
+    # Generate noise directly on device
+    noise_x = torch.normal(0.0, x_std, size=(N,), device=particles.device)
+    noise_y = torch.normal(0.0, y_std, size=(N,), device=particles.device)
+
+    # In-place update of particles
+    particles[:, X] += x_delta + noise_x
+    particles[:, Y] += y_delta + noise_y
+
+    # In-place clamping to bounds
+    particles[:, X].clamp_(0.0, max_height)
+    particles[:, Y].clamp_(0.0, max_width)
+
+    return particles
 
 
 def prepare_inputs(particles, odometry, noise, max_height, max_width, device):

@@ -27,7 +27,7 @@ from utilities import (
 )
 
 
-DEFAULT_SIZE = tuple(2 ** i for i in range(12, 23, 2))
+DEFAULT_SIZE = tuple(2 ** i for i in range(8, 23, 2))
 
 
 @click.command("run")
