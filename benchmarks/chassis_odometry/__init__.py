@@ -46,5 +46,4 @@ __implementations__ = (
     "jax",
     "numpy",
     "pytorch",
-    "taichi"
 ) 

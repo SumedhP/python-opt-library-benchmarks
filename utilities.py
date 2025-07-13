@@ -102,7 +102,7 @@ def format_output(stats, benchmark_title, device="cpu"):
         if np.issubdtype(type(value), np.integer):
             typecode = ","
         else:
-            typecode = ".3f"
+            typecode = ".6f"
 
         if is_time:
             format_string = f"{{value:>{col_width}{typecode}}}"
