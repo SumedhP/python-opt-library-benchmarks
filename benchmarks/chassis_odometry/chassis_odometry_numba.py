@@ -6,7 +6,7 @@ X = 0
 Y = 1
 
 
-@nb.njit(parallel=True, fastmath=True, boundscheck=False)
+@nb.njit(parallel=True, fastmath=True, boundscheck=False, cache=True)
 def chassis_odom_update(
     particles: np.ndarray,
     odometry: np.ndarray,

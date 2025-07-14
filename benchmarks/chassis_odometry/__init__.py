@@ -11,13 +11,13 @@ def generate_inputs(size):
     N = size
     
     # Generate particle positions (N, 2) - [x, y]
-    particles = np.random.uniform(0, 100, size=(N, 2)).astype(np.float64)
+    particles = np.random.uniform(0, 100, size=(N, 2)).astype(np.float32)
     
     # Generate odometry update [dx, dy]
-    odometry = np.random.uniform(-1, 1, size=2).astype(np.float64)
+    odometry = np.random.uniform(-1, 1, size=2).astype(np.float32)
     
     # Generate noise standard deviations [std_x, std_y]
-    noise = np.random.uniform(0.1, 0.5, size=2).astype(np.float64)
+    noise = np.random.uniform(0.1, 0.5, size=2).astype(np.float32)
     
     # Map boundaries
     max_height = 100.0
