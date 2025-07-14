@@ -1,6 +1,6 @@
 import torch
 
-@torch.compile(backend="aot_eager")
+@torch.jit.script
 def chassis_odom_update(
     particles: torch.Tensor,
     odometry: torch.Tensor,
